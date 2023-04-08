@@ -2,13 +2,16 @@ package pl.edu.agh.mwo.invoice;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.Comparator;
 
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
     private Map<Product, Integer> products = new HashMap<>();
-    private static int nextNumber = 0;
+    public static int nextNumber = 0;
     private final int number = ++nextNumber;
 
     public void addProduct(Product product) {
@@ -46,5 +49,13 @@ public class Invoice {
 
     public int getNumber() {
         return number;
+    }
+
+    public int getNumberOfProducts() {
+        return products.size();
+    }
+
+    public List<Map.Entry<Product, Integer>> getProducts() {
+        return products.entrySet().stream().sorted(Comparator.comparing(o -> o.getKey().getName())).collect(Collectors.toList());
     }
 }
