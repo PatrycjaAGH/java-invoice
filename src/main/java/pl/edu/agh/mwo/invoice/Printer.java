@@ -13,8 +13,8 @@ public class Printer {
             Product product = p.getKey();
             int count = p.getValue();
             BigDecimal price = BigDecimal.valueOf(count).multiply(product.getPrice());
-            results += "\n" + lp + ". " + product.getName() + ", count: " + count +
-                    ", price: " + price + ".";
+            results += "\n" + lp + ". " + product.getName() + ", count: " + count
+                    + ", price: " + price + ".";
             lp++;
         }
         results += "\nIn total: " + invoice.getNumberOfProducts() + " products";
