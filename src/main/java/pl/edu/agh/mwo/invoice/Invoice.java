@@ -56,6 +56,8 @@ public class Invoice {
     }
 
     public List<Map.Entry<Product, Integer>> getProducts() {
-        return products.entrySet().stream().sorted(Comparator.comparing(o -> o.getKey().getName())).collect(Collectors.toList());
+        return products.entrySet().stream()
+                .sorted(Comparator.comparing(o -> o.getKey().getName()))
+                .collect(Collectors.toList());
     }
 }
